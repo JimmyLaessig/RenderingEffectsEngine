@@ -7,3 +7,6 @@
 [submodule "Coral"]
 	path = Coral
 	url = git@github.com:JimmyLaessig/Coral.git
+[submodule "src/Coral"]
+	path = src/Coral
+	url = git@github.com:JimmyLaessig/Coral.git

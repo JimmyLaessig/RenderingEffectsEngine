@@ -1,9 +1,9 @@
 #include <catch2/catch_all.hpp>
 #include <catch2/matchers/catch_matchers_all.hpp>
 
-#include <Common/TypeName.hpp>
+#include <Reef/Util/TypeName.hpp>
 
-#include <iostream>
+#include <string>
 
 struct MyStruct
 {
@@ -44,14 +44,16 @@ namespace Namespace1
 
 TEST_CASE("Test typeName")
 {
-	CHECK(Common::typeName<MyStruct>() == "MyStruct");
-	CHECK(Common::typeName<Namespace1::MyStruct1>() == "Namespace1::MyStruct1");
-	CHECK(Common::typeName<Namespace1::Namespace2::MyStruct2>() == "Namespace1::Namespace2::MyStruct2");
+	CHECK(Reef::Util::typeName<MyStruct>() == "MyStruct");
+	CHECK(Reef::Util::typeName<Namespace1::MyStruct1>() == "Namespace1::MyStruct1");
+	CHECK(Reef::Util::typeName<Namespace1::Namespace2::MyStruct2>() == "Namespace1::Namespace2::MyStruct2");
 
-	CHECK(Common::typeName<MyClass>() == "MyClass");
-	CHECK(Common::typeName<Namespace1::MyClass1>() == "Namespace1::MyClass1");
-	CHECK(Common::typeName<Namespace1::Namespace2::MyClass2>() == "Namespace1::Namespace2::MyClass2");
+	CHECK(Reef::Util::typeName<MyClass>() == "MyClass");
+	CHECK(Reef::Util::typeName<Namespace1::MyClass1>() == "Namespace1::MyClass1");
+	CHECK(Reef::Util::typeName<Namespace1::Namespace2::MyClass2>() == "Namespace1::Namespace2::MyClass2");
 
 	// The typename function does not work with alias types or templated types
-	CHECK_FALSE(Common::typeName<size_t>() == "size_t");
+	CHECK_FALSE(Reef::Util::typeName<size_t>() == "size_t");
+
+	CHECK(Reef::Util::typeName<std::string>() == "std::string");
 }

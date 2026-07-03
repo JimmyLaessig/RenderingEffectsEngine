@@ -1,8 +1,7 @@
 #include <catch2/catch_all.hpp>
 #include <catch2/matchers/catch_matchers_all.hpp>
 
-#include <Common/Visitor.hpp>
-
+#include <Reef/Util/Visitor.hpp>
 
 
 TEST_CASE("Test Vistor")
@@ -18,7 +17,7 @@ TEST_CASE("Test Vistor")
 		{
 			v = 1.f;
 
-			Common::visit(v, Common::Visitor
+			Reef::Util::visit(v, Reef::Util::Visitor
 				{
 					[](auto) { CHECK(false); },
 					[&](float f) { CHECK(f == 1.f); called = true; },
@@ -29,7 +28,7 @@ TEST_CASE("Test Vistor")
 		{
 			v = 1;
 
-			Common::visit(v, Common::Visitor
+			Reef::Util::visit(v, Reef::Util::Visitor
 				{
 					[](auto) { CHECK(false); },
 					[&](int i) { CHECK(i == 1); called = true; },
@@ -40,7 +39,7 @@ TEST_CASE("Test Vistor")
 		{
 			v = "abc";
 
-			Common::visit(v, Common::Visitor
+			Reef::Util::visit(v, Reef::Util::Visitor
 				{
 					[&](const std::string& s) { CHECK(s == "abc"); called = true; },
 					[](auto) { CHECK(false); },
@@ -56,7 +55,7 @@ TEST_CASE("Test Vistor")
 		{
 			v = 1.f;
 
-			auto res = Common::visit(v, Common::Visitor
+			auto res = Reef::Util::visit(v, Reef::Util::Visitor
 				{
 					[](auto) { return 0.0f; },
 					[&](float f) { return 1.f; },
@@ -69,7 +68,7 @@ TEST_CASE("Test Vistor")
 		{
 			v = 1;
 
-			auto res = Common::visit(v, Common::Visitor
+			auto res = Reef::Util::visit(v, Reef::Util::Visitor
 				{
 					[](auto) { return 0.0f; },
 					[&](int f) { return 1.f; },
@@ -82,7 +81,7 @@ TEST_CASE("Test Vistor")
 		{
 			v = "abc";
 
-			auto res = Common::visit(v, Common::Visitor
+			auto res = Reef::Util::visit(v, Reef::Util::Visitor
 				{
 					[](auto) { return size_t(0); },
 					[&](const std::string& s) { return s.size(); },

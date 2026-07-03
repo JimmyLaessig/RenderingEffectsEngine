@@ -20,12 +20,10 @@ set(CMAKE_CXX_EXTENSIONS FALSE)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN TRUE)
 
-include(cmake/ConfigureTarget.cmake)
+add_subdirectory(deps)
 
-add_subdirectory(ThirdParty)
+include(cmake/AddLibrary.cmake)
 
 add_subdirectory(src)
-
-add_subdirectory(test)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)

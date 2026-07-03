@@ -1,0 +1,4 @@
+#ifndef REEF_EDITOR_EDITOR_H
+
+#endif // !REEF_EDITOR_EDITOR_H
+
